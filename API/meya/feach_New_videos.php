@@ -26,7 +26,7 @@ $videoData = [
         "title" => "Video 2",
         "category" => "Cute",
     ], [
-        "imageUrl" => "http://" . trim($ip) . "/n7/api/images/team_images/arsenal.png",
+        "imageUrl" => "http://" . trim($ip) . "API/n7/api/images/team_images/arsenal.png",
         "title" => "Video 2",
         "category" => "Cute",
     ],

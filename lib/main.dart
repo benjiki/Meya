@@ -31,7 +31,7 @@ class _MyappState extends State<Myapp> {
       routes: {
         "/": (context) => Homepage(),
         "catagoiresPage":(context)=> CategoryPage(),
-        "profilepage":(context)=> profilePage()
+        "profilepage":(context)=> ProfilePage()
       },
     );
   }
