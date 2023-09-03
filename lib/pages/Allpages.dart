@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meya/widgets/CustomNavBar.dart';
 
-class Allpages extends StatelessWidget {
-  const Allpages({super.key});
+class Allvideos extends StatelessWidget {
+  const Allvideos({super.key});
 
   @override
   Widget build(BuildContext context) {
