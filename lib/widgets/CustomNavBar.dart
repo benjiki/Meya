@@ -37,7 +37,7 @@ class CustomNavBar extends StatelessWidget {
            ),
          ),InkWell(
            onTap:(){
-             Navigator.pushNamed(context, "profilepage");
+             Navigator.pushNamed(context, "allvideos");
            },
            child: Icon(Icons.home,
              size: 35,

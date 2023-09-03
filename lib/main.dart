@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:meya/pages/CategoryPage.dart';
 import 'package:meya/pages/HomePage.dart';
 import 'package:meya/pages/profilePage.dart';
-
+import 'package:meya/pages/Allpages.dart;
 void main() {
   runApp(Myapp());
 }
@@ -31,7 +31,8 @@ class _MyappState extends State<Myapp> {
       routes: {
         "/": (context) => Homepage(),
         "catagoiresPage":(context)=> CategoryPage(),
-        "profilepage":(context)=> profilePage()
+        "profilepage":(context)=> ProfilePage(),
+         "allvideos":(context)=> Allvideos(),
       },
     );
   }
