@@ -21,25 +21,35 @@ class UsersController extends Controller
         return view('admin.users control.add user');
     }
 
-    public function store(Request $request)
-    {
-        // Validate user input
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users|max:255',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+   public function store(Request $request)
+{
+    // Validate user input
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|unique:users|max:255',
+        'password' => 'required|string|min:6|confirmed',
+    ]);
 
-        // Create a new user
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
-        ]);
+    // Create a new user
+    $user = User::create([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'password' => bcrypt($validatedData['password']),
+    ]);
 
-        // Redirect to the user listing page with a success message
-        return redirect()->route('admin.users control.index')->with('success', 'User created successfully!');
+    // Check if this is the first user being created
+    $isFirstUser = User::count() === 1;
+
+    // If it's the first user, assign a role or any other default settings
+    if ($isFirstUser) {
+        // Assign a role to the first user
+        $user->role('admin');
+        // You can also set other default settings for the first user here
     }
+
+    // Redirect to the user listing page with a success message
+    return redirect()->route('admin.users control.index')->with('success', 'User created successfully!');
+}
 
     public function edit(User $user)
     {
