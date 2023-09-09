@@ -1,57 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:meya/widgets/CustomNavBar.dart';
 
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Netflix Profile Clone',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        brightness: Brightness.dark,
+      ),
+      home: ProfilePage(),
+    );
+  }
+}
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('Profile'),
+        backgroundColor: Colors.black,
+        title: Text('Profile', style: TextStyle(color: Colors.white)),
         centerTitle: true,
+        elevation: 0, // Remove shadow
       ),
       body: ListView(
         children: <Widget>[
-          UserInformation(),  // Widget to display user's photo, name, and email
-          ListTile(
-            leading: Icon(Icons.edit),
-            title: Text('Edit Profile'),
-            onTap: () {
-              // Handle edit profile functionality here
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () {
-              // Handle settings functionality here
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.credit_card),
-            title: Text('Billing Details'),
-            onTap: () {
-              // Handle billing details functionality here
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile Management'),
-            onTap: () {
-              // Handle profile management functionality here
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            onTap: () {
-              // Handle logout functionality here
-            },
-          ),
+          UserInformation(),
+          _buildTile(context, Icons.edit, 'Edit Profile'),
+          _buildTile(context, Icons.settings, 'Settings'),
+          _buildTile(context, Icons.credit_card, 'Billing Details'),
+          _buildTile(context, Icons.account_circle, 'Profile Management'),
+          _buildTile(context, Icons.logout, 'Logout'),
         ],
       ),
       bottomNavigationBar: CustomNavBar(),
+    );
+  }
+
+  ListTile _buildTile(BuildContext context, IconData icon, String title) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.white),
+      title: Text(title, style: TextStyle(color: Colors.white)),
+      onTap: () {
+        // TODO: Handle onTap
+      },
     );
   }
 }
@@ -60,25 +60,26 @@ class UserInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
+      padding: const EdgeInsets.symmetric(vertical: 30.0),
       child: Column(
         children: [
           CircleAvatar(
-            radius: 50.0,
+            radius: 70.0,
             backgroundImage: NetworkImage('https://example.com/path/to/user/profile/image.jpg'),
           ),
           SizedBox(height: 20.0),
           Text(
             'John Doe',
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 28.0,
               fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
           ),
           Text(
             'johndoe@example.com',
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 18.0,
               color: Colors.grey,
             ),
           ),

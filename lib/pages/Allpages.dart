@@ -4,22 +4,11 @@ import 'package:http/http.dart' as http;
 import 'package:meya/widgets/CustomNavBar.dart';
 import 'package:meya/constants.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'New video',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AllPages(),
-    );
-  }
-}
-
 class AllPages extends StatefulWidget {
+  final String? searchQuery; // Optional search query parameter
+
+  AllPages({this.searchQuery});
+
   @override
   _AllPagesState createState() => _AllPagesState();
 }
@@ -34,7 +23,12 @@ class _AllPagesState extends State<AllPages> {
   }
 
   Future<void> fetchFilms() async {
-    final response = await http.get(Uri.parse('http://$ipAddress/n7/meya/feach_New_videos.php'));
+    // Check if there's a search query, if so, append it to the URL
+    final url = widget.searchQuery != null
+        ? 'http://$ipAddress/n7/meya/feach_New_videos.php?query=${widget.searchQuery}'
+        : 'http://$ipAddress/n7/meya/feach_New_videos.php';
+
+    final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = json.decode(response.body);
@@ -158,7 +152,7 @@ class FilmDetail extends StatelessWidget {
 class Film {
   final String title;
   final String imageUrl;
-  final String category; // New category field
+  final String category;
 
-  Film({required this.title, required this.imageUrl, required this.category}); // Include category in the constructor
+  Film({required this.title, required this.imageUrl, required this.category});
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:meya/constants.dart';
+
 class VideoData {
   final String imageUrl;
   final String title;
@@ -77,18 +78,18 @@ class _NewVideosWidgetState extends State<NewVideosWidget> {
             ],
           ),
         ),
-        SizedBox(height: 15,),
+        SizedBox(height: 15),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: videos.map((video) {
+            children: videos.take(20).map((video) {
               return InkWell(
                 onTap: () {
                   // Handle video tap
                 },
                 child: Container(
-                  width: 190,
-                  height: 300,
+                  width: 150,
+                  height: 250,
                   margin: EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
                     color: Color(0xFF292B37),
@@ -111,8 +112,8 @@ class _NewVideosWidgetState extends State<NewVideosWidget> {
                         ),
                         child: Image.network(
                           video.imageUrl,
-                          height: 200,
-                          width: 200,
+                          height: 150,
+                          width: double.infinity,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -128,16 +129,16 @@ class _NewVideosWidgetState extends State<NewVideosWidget> {
                               video.title,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 21,
+                                fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            SizedBox(height: 5,),
+                            SizedBox(height: 5),
                             Text(
                               video.category,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 21,
+                                fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:meya/constants.dart';
+import '../constants.dart';
+import '../widgets/CustomNavBar.dart';  // Required import to use CustomNavBar
 
 void main() => runApp(MyApp());
 
@@ -34,9 +35,6 @@ class _UpcomingImagesPageState extends State<UpcomingImagesPage> {
 
   Future<void> fetchAllImageNames() async {
     final response = await http.get(Uri.parse('http://$ipAddress/n7/meya/single_page_upcoming.php'));
-
-    print("Raw Response: ${response.body}"); // Log the raw response to inspect it
-
     if (response.statusCode == 200) {
       List<String> fetchedNames;
       try {
@@ -54,11 +52,8 @@ class _UpcomingImagesPageState extends State<UpcomingImagesPage> {
     }
   }
 
-
-
   Future<String?> fetchBase64Image(String imageName) async {
     final response = await http.get(Uri.parse('http://$ipAddress/n7/meya/feach_user_img.php?image_name=$imageName'));
-
     if (response.statusCode == 200) {
       try {
         final imageData = ImageData.fromJson(json.decode(response.body));
@@ -71,7 +66,6 @@ class _UpcomingImagesPageState extends State<UpcomingImagesPage> {
       return null;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +102,11 @@ class _UpcomingImagesPageState extends State<UpcomingImagesPage> {
           );
         },
       ),
+      bottomNavigationBar: CustomNavBar(),  // Added the CustomNavBar here
     );
   }
 }
+
 class ImageData {
   final String data;
 
