@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:meya/pages/CategoryPage.dart';
 import 'package:meya/pages/HomePage.dart';
 import 'package:meya/pages/profilePage.dart';
-import 'package:meya/pages/Allpages.dart;
+import 'package:meya/pages/Allpages.dart';
+
 void main() {
   runApp(Myapp());
 }
+
 class Myapp extends StatefulWidget {
   const Myapp({super.key});
 
@@ -17,10 +19,11 @@ class Myapp extends StatefulWidget {
 
 class _MyappState extends State<Myapp> {
   @override
-  void initState(){
+  void initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,9 +33,9 @@ class _MyappState extends State<Myapp> {
       ),
       routes: {
         "/": (context) => Homepage(),
-        "catagoiresPage":(context)=> CategoryPage(),
-        "profilepage":(context)=> ProfilePage(),
-         "allvideos":(context)=> Allvideos(),
+        "catagoiresPage": (context) => CategoryPage(),
+        "profilepage": (context) => ProfilePage(),
+        "allvideos": (context) => Allvideos(),
       },
     );
   }
