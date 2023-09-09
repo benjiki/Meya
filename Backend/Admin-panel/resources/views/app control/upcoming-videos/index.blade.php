@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4">All users</h1>
+    <h1 class="mt-4">All Upcoming Videos</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Lists</li>
     </ol>
@@ -12,19 +12,27 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Thumbnail</th>
+
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($upcomingVideos as $upcomingVideo)
                     <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
+                        <td>{{ $upcomingVideo->name }}</td>
+                        <td>
+                            @if ($upcomingVideo->thumbnail)
+                                <img src="{{ asset('storage/'.$upcomingVideo->thumbnail) }}" alt="Thumbnail" width="100">
+                            @else
+                                No Thumbnail
+                            @endif
+                        </td>
+
                         <td>
                             <div class="action-buttons">
-                                <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-sm">Edit</a>
-                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                <a href="{{ route('app control.upcoming-videos.edit', $upcomingVideo) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <form action="{{ route('app control.upcoming-videos.destroy', $upcomingVideo) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this upcoming video?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
