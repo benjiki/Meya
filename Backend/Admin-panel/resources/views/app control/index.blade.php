@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4">All users</h1>
+    <h1 class="mt-4">All registered  users in the app</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Lists</li>
     </ol>
@@ -13,6 +13,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th> profile picture</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -21,10 +22,11 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->profile_picture }}</td>
                         <td>
                             <div class="action-buttons">
-                                <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-sm">Edit</a>
-                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                <a href="{{ route('app control.users.edit', $user) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <form action="{{ route('app control.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

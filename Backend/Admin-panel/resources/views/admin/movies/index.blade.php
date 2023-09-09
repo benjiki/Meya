@@ -3,6 +3,9 @@
 @extends('layouts.master')
 
 @section('content')
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
     <h1>Movies</h1>
 
     <a href="{{ route('admin.movies.create') }}" class="btn btn-primary">Create Movie</a>
