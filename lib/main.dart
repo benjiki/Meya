@@ -1,28 +1,24 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:meya/pages/Allpages.dart';
 import 'package:meya/pages/CategoryPage.dart';
 import 'package:meya/pages/HomePage.dart';
 import 'package:meya/pages/UpComing.dart';
 import 'package:meya/pages/profilePage.dart';
-<<<<<<< HEAD
 import 'package:meya/pages/Allpages.dart';
-=======
->>>>>>> 49c6e0ac03c999d6a76036f91dd971a0aaa040be
 
 void main() {
-  runApp(Myapp());
+  runApp(MyApp());
 }
 
-class Myapp extends StatefulWidget {
-  const Myapp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key});
 
   @override
-  State<Myapp> createState() => _MyappState();
+  State<MyApp> createState() => _MyAppState();
 }
 
-class _MyappState extends State<Myapp> {
+class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
@@ -38,17 +34,12 @@ class _MyappState extends State<Myapp> {
       ),
       routes: {
         "/": (context) => Homepage(),
-<<<<<<< HEAD
-        "catagoiresPage": (context) => CategoryPage(),
-        "profilepage": (context) => ProfilePage(),
-        "allvideos": (context) => Allvideos(),
-=======
-        "catagoiresPage":(context)=> CategoryPage(),
-        "profilepage":(context)=> ProfilePage(),
+        "categoriesPage": (context) => CategoryPage(),
+        "profilePage": (context) => ProfilePage(),
         "UpcomingImagesPage": (context) => UpcomingImagesPage(),
-        "allpage": (context) => AllPages(),
+        "allPage": (context) => AllPages(),
 
->>>>>>> 49c6e0ac03c999d6a76036f91dd971a0aaa040be
+        //  "allPage": (context) => AllPages(),
       },
     );
   }
