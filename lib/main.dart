@@ -38,6 +38,8 @@ class _MyAppState extends State<MyApp> {
         "profilePage": (context) => ProfilePage(),
         "UpcomingImagesPage": (context) => UpcomingImagesPage(),
         "allPage": (context) => AllPages(),
+
+        //  "allPage": (context) => AllPages(),
       },
     );
   }
